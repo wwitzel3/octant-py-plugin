@@ -68,7 +68,7 @@ def defaultView():
         ],
     }
     contents = json.dumps(content)
-    encoded = contents.encode(encoding='latin1')
+    encoded = contents.encode(encoding='utf-8')
     return encoded
 
 
@@ -86,7 +86,7 @@ def viewOne():
         ]
     }
     contents = json.dumps(content)
-    encoded = contents.encode(encoding='latin1')
+    encoded = contents.encode(encoding='utf-8')
     return encoded
 
 def viewTwo():
@@ -103,7 +103,7 @@ def viewTwo():
         ]
     }
     contents = json.dumps(content)
-    encoded = contents.encode(encoding='latin1')
+    encoded = contents.encode(encoding='utf-8')
     return encoded
 
 def get_open_port():
