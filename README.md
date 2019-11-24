@@ -2,6 +2,8 @@
 
 Example Python plugin for Octant
 
+![Preview of Python Plugin](preview.PNG)
+
 ## Try
 
     python3 -m venv venv
