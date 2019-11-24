@@ -90,7 +90,7 @@ setup(
     # executes the function `main` from this package when invoked:
     entry_points={  # Optional
         'console_scripts': [
-            'octant-py-plugin=main:main',
+            'octant-py-plugin=plugin:main',
         ],
     },
 
