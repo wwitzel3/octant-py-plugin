@@ -13,10 +13,13 @@ from lib import (
     dashboard_pb2
 )
 
+from navigation import Navigation
+
 from views import (
     defaultView,
     viewOne,
     viewTwo,
+    viewThree,
 )
 
 class PluginServicer(dashboard_pb2_grpc.PluginServicer):
@@ -31,19 +34,21 @@ class PluginServicer(dashboard_pb2_grpc.PluginServicer):
         return result
 
     def Navigation(self, request, context):
-        navigation = dashboard_pb2.NavigationResponse.Navigation(
-            title="Python Plugin",
-            path="/octant-py-plugin",
-            icon_name="cloud",
-        )
-        result = dashboard_pb2.NavigationResponse(navigation=navigation)
-        return result
+        nav = Navigation("Python Plugin", "/octant-py-plugin", "cloud")
+        
+        nav.add(Navigation("View One", "/octant-py-plugin/view-one", "folder"))
+        nav.add(Navigation("View Two", "/octant-py-plugin/view-two", "folder"))
+        nav.add(Navigation("View Three", "/octant-py-plugin/view-three", "folder"))
+
+        return nav.toResponse()
 
     def Content(self, request, context):
         if request.path == '/view-one':
             content = viewOne()
         elif request.path == '/view-two':
             content = viewTwo()
+        elif request.path == '/view-three':
+            content = viewThree()
         else:
             content = defaultView()
         result = dashboard_pb2.ContentResponse(content_response=content)
@@ -68,7 +73,10 @@ def main():
     print("1|1|tcp|127.0.0.1:"+port+"|grpc")
     sys.stdout.flush()
 
-    server.wait_for_termination()
+    try:
+        server.wait_for_termination()
+    except KeyboardInterrupt:
+        pass
 
 if __name__ == '__main__':
     main()
