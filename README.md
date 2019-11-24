@@ -2,7 +2,7 @@
 
 Example Python plugin for Octant
 
-![Preview of Python Plugin](preview.PNG)
+![Preview of Python Plugin](octant-py-plugin.gif)
 
 ## Try
 
