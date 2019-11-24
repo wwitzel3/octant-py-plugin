@@ -1,5 +1,3 @@
-#!/home/wwitzel3/.config/octant/plugins/octant_pyplugin/venv/bin/python
-
 from concurrent import futures
 
 import sys
